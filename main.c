@@ -1,31 +1,38 @@
 #include <stdio.h>
 
 int main() {
-  int num, temp;
-  char calc;
+  int num1, num2, temp;
+  char opp, continue_calc;
 
   do {
-    printf("input number: ");
-    scanf("num1=%d, calc=%c", &num, &calc);
+    printf("input num, opp, num: ");
+    if (scanf("%d %c %d", &num1, &opp, &num2) != 3) {
+      printf("Error Invalid input.\n");
+    } else {
+      switch (opp) {
+      case '+':
+        temp = num1 + num2;
+        break;
+      case '-':
+        temp = num1 - num2;
+        break;
+      case '/':
+        temp = num1 / num2;
+        break;
+      case '*':
+        temp = num1 * num2;
+        break;
+      default:
+        printf("Error operator is not correct\n");
+        continue;
+      }
+      printf("%d %c %d = %d\n", num1, opp, num2, temp);
 
-    switch (calc) {
-    case '+':
-      temp = temp + num;
-      break;
-    case '-':
-      temp = temp - num;
-      break;
-    case '/':
-      temp = temp / num;
-      break;
-    case '*':
-      temp = temp * num;
-      break;
+      printf("Do you wnat to continue? (y/n): ");
+      scanf(" %c", &continue_calc);
+      getchar();
     }
-
-    printf("your number is %d\n", temp);
-
-  } while (num != EOF);
+  } while (continue_calc == 'y' || continue_calc == 'Y');
 
   return 0;
 }
