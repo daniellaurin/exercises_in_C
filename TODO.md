@@ -1,4 +1,4 @@
-* [ ] Exercise 1: calculator
-* [ ] Exercise 2: 
+* [X] Exercise 1: calculator
+* [X] Exercise 2: fizz buzz
 * [ ] Exercise 3: 
 
