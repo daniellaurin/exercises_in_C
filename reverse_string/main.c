@@ -6,8 +6,8 @@
 
 int main(void) {
 
-  char str[30];
-  int i, rStr, leng = -1;
+  char str[100];
+  int i, leng;
 
   printf("Enter String: ");
   fgets(str, 30, stdin);
@@ -17,8 +17,7 @@ int main(void) {
   }
 
   for (; leng >= 0; leng--) {
-    rStr = str[leng];
-    printf("%c", rStr);
+    printf("%c", str[leng]);
   }
 
   return 0;
