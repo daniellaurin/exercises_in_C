@@ -28,11 +28,25 @@ static bool is_vowel(char c) {
 int main(void) {
   char word[100];
   char pig_latin[100];
+  int cluster;
 
   printf("Enter a word: ");
   scanf("%s", word);
 
-  int length = strlen(word);
+  int len = strlen(word);
+
+  for (int i = 0; i < len; i++) {
+    if (is_vowel(word[i]) == false) {
+      cluster++;
+    }
+  }
+  cluster += 1;
+
+  if (word[0] == 'y') {
+    printf("%s%cay\n", word + 1, word[0]);
+
+    return 0;
+  }
 
   // Rule 1:
   if ((is_vowel(word[0])) || (word[0] == 'x' && word[1] == 'r') ||
@@ -43,18 +57,29 @@ int main(void) {
     return 0;
   }
 
-  // Rule 3:
+  // // Rule 3:
   if ((is_vowel(word[0]) == false) && (word[1] == 'q') && (word[2] == 'u')) {
 
     pig_latin[0] = word[0];
     char *new_word = word + 3;
 
-    printf("%s%cquay", new_word, *pig_latin);
+    printf("%s%cquay\n", new_word, *pig_latin);
 
     return 0;
   }
 
-  // Rule 2:
+  // Rule 4:
+  if ((cluster >= 2) && (word[cluster - 1] == 'y')) {
+
+    char last = word[len - 1];
+    word[len - 1] = '\0';
+
+    printf("%c%say\n", last, word);
+
+    return 0;
+  }
+
+  // Rule 2: This is problematic
   if ((is_vowel(word[0]) == false) && (is_vowel(word[1]) == false)) {
     pig_latin[0] = word[0];
     pig_latin[1] = word[1];
@@ -65,31 +90,32 @@ int main(void) {
     return 0;
   }
 
-  // Rule 4:
-  if ((is_vowel(word[0]) == false) && (is_vowel(word[1]) == false) &&
-      (word[2] == 'y')) {
+  // // Rule 4:
+  if ((len == 2) && (word[1] == 'y')) {
 
-    pig_latin[0] = word[0];
-    char *new_word = word + 1;
-    printf("y%s%cay", new_word, *pig_latin);
-    return 0;
-  }
-
-  if ((length == 2) && (word[1] == 'y')) {
-    pig_latin[0] = word[0];
-    char *new_word = word + 1;
-
-    printf("%s%cay", new_word, *pig_latin);
+    printf("%s%cay\n", word + 1, word[0]);
 
     return 0;
   }
 
-  // Rule 2:
+  // // Rule 2:
   else {
-    pig_latin[0] = word[0];
+
     char *new_word = word + 1;
-    printf("%s%cay", new_word, *pig_latin);
+    printf("%s%cay\n", new_word, word[0]);
 
     return 0;
   }
 }
+/*
+"apple" -> "appleay"
+"xray" -> "xrayay"
+"yttria" -> "yttriaay"
+"pig" -> "igpay"
+"chair" -> "airchay"
+"square" -> "aresquay"
+"rhythm" -> "ythmrhay"
+"my" -> "ymay"
+"thyme" ->  ymethay
+"flly" --> "yfllay"
+*/
