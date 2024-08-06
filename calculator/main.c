@@ -25,6 +25,7 @@ int main() {
       default:
         printf("Error operator is not correct\n");
         continue;
+        -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -
       }
       printf("%d %c %d = %d\n", num1, opp, num2, temp);
 

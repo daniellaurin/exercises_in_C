@@ -3,7 +3,7 @@
 * [X] Exercise 3: fibonacci sequence
 * [X] Exercise 4: reverse a string 
 * [ ] Exercise 5: pig latin
-* [ ] Exercise 6:
+* [X] Exercise 6: sentence smash
 * [ ] Exercise 7:
 * [ ] Exercise 8:
 * [ ] Exercise 9:
